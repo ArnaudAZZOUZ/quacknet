@@ -1,0 +1,7 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+app_coincoin:
+  path: /coincoin
+  controller: App\Controller\Coincoin::post
+
