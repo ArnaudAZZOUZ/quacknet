@@ -121,6 +121,8 @@
       <path value="$PROJECT_DIR$/vendor/psr/event-dispatcher" />
       <path value="$PROJECT_DIR$/vendor/psr/log" />
       <path value="$PROJECT_DIR$/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1kMv9hHlAzNTPLfcItgXZTSfRK4" />
@@ -144,7 +146,7 @@
       <option name="presentableId" value="Default" />
       <updated>1605523125084</updated>
       <workItem from="1605523126137" duration="13767000" />
-      <workItem from="1605692949240" duration="22607000" />
+      <workItem from="1605692949240" duration="30913000" />
     </task>
     <servers />
   </component>
