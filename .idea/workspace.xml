@@ -144,7 +144,7 @@
       <option name="presentableId" value="Default" />
       <updated>1605523125084</updated>
       <workItem from="1605523126137" duration="13767000" />
-      <workItem from="1605692949240" duration="19140000" />
+      <workItem from="1605692949240" duration="22607000" />
     </task>
     <servers />
   </component>
@@ -152,9 +152,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1918" y="-126" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605698044035">
-      <screen x="1366" y="-304" width="1920" height="1040" />
+    <state x="274" y="38" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605776008988">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="274" y="38" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728/1366.-304.1920.1040@0.0.1366.728" timestamp="1605776008988" />
     <state x="1918" y="-126" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728/1366.-304.1920.1040@1366.-304.1920.1040" timestamp="1605698044035" />
     <state x="2019" y="-124" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1605697281549">
       <screen x="1366" y="-304" width="1920" height="1040" />
