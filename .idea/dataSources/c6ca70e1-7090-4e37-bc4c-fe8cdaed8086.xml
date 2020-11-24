@@ -10,175 +10,36 @@
     <collation id="3" parent="1" name="BINARY"/>
     <collation id="4" parent="1" name="NOCASE"/>
     <collation id="5" parent="1" name="RTRIM"/>
-    <table id="6" parent="2" name="doctrine_migration_versions"/>
-    <table id="7" parent="2" name="ducks"/>
-    <table id="8" parent="2" name="quack"/>
-    <table id="9" parent="2" name="reset_password_request"/>
-    <table id="10" parent="2" name="sqlite_master">
+    <table id="6" parent="2" name="sqlite_master">
       <System>1</System>
     </table>
-    <table id="11" parent="2" name="sqlite_sequence">
+    <table id="7" parent="2" name="sqlite_sequence">
       <System>1</System>
     </table>
-    <column id="12" parent="6" name="version">
-      <Position>1</Position>
-      <DataType>VARCHAR(191)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="13" parent="6" name="executed_at">
-      <Position>2</Position>
-      <DataType>DATETIME|0s</DataType>
-      <DefaultExpression>NULL</DefaultExpression>
-    </column>
-    <column id="14" parent="6" name="execution_time">
-      <Position>3</Position>
-      <DataType>INTEGER|0s</DataType>
-      <DefaultExpression>NULL</DefaultExpression>
-    </column>
-    <index id="15" parent="6" name="sqlite_autoindex_doctrine_migration_versions_1">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>version</ColNames>
-      <ColumnCollations></ColumnCollations>
-      <Unique>1</Unique>
-    </index>
-    <key id="16" parent="6">
-      <ColNames>version</ColNames>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>sqlite_autoindex_doctrine_migration_versions_1</UnderlyingIndexName>
-    </key>
-    <column id="17" parent="7" name="id">
-      <Position>1</Position>
-      <DataType>INTEGER|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>null</SequenceIdentity>
-    </column>
-    <column id="18" parent="7" name="email">
-      <Position>2</Position>
-      <DataType>VARCHAR(180)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="19" parent="7" name="roles">
-      <Position>3</Position>
-      <DataType>CLOB|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="20" parent="7" name="password">
-      <Position>4</Position>
-      <DataType>VARCHAR(255)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="21" parent="7" name="firstname">
-      <Position>5</Position>
-      <DataType>VARCHAR(50)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="22" parent="7" name="lastname">
-      <Position>6</Position>
-      <DataType>VARCHAR(50)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="23" parent="7" name="duckname">
-      <Position>7</Position>
-      <DataType>VARCHAR(50)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <index id="24" parent="7" name="UNIQ_F3E591ADE7927C74">
-      <ColNames>email</ColNames>
-      <ColumnCollations></ColumnCollations>
-      <Unique>1</Unique>
-    </index>
-    <index id="25" parent="7" name="UNIQ_F3E591AD90361416">
-      <ColNames>duckname</ColNames>
-      <ColumnCollations></ColumnCollations>
-      <Unique>1</Unique>
-    </index>
-    <key id="26" parent="7">
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="27" parent="8" name="id">
-      <Position>1</Position>
-      <DataType>INTEGER|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>null</SequenceIdentity>
-    </column>
-    <column id="28" parent="8" name="content">
-      <Position>2</Position>
-      <DataType>CLOB|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="29" parent="8" name="created_at">
-      <Position>3</Position>
-      <DataType>DATETIME|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <key id="30" parent="8">
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="31" parent="9" name="id">
-      <Position>1</Position>
-      <DataType>INTEGER|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>null</SequenceIdentity>
-    </column>
-    <column id="32" parent="9" name="user_id">
-      <Position>2</Position>
-      <DataType>INTEGER|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="33" parent="9" name="selector">
-      <Position>3</Position>
-      <DataType>VARCHAR(20)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="34" parent="9" name="hashed_token">
-      <Position>4</Position>
-      <DataType>VARCHAR(100)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="35" parent="9" name="requested_at">
-      <Position>5</Position>
-      <DataType>DATETIME|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="36" parent="9" name="expires_at">
-      <Position>6</Position>
-      <DataType>DATETIME|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <index id="37" parent="9" name="IDX_7CE748AA76ED395">
-      <ColNames>user_id</ColNames>
-      <ColumnCollations></ColumnCollations>
-    </index>
-    <key id="38" parent="9">
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="39" parent="10" name="type">
+    <column id="8" parent="6" name="type">
       <Position>1</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="40" parent="10" name="name">
+    <column id="9" parent="6" name="name">
       <Position>2</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="41" parent="10" name="tbl_name">
+    <column id="10" parent="6" name="tbl_name">
       <Position>3</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="42" parent="10" name="rootpage">
+    <column id="11" parent="6" name="rootpage">
       <Position>4</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="43" parent="10" name="sql">
+    <column id="12" parent="6" name="sql">
       <Position>5</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="44" parent="11" name="name">
+    <column id="13" parent="7" name="name">
       <Position>1</Position>
     </column>
-    <column id="45" parent="11" name="seq">
+    <column id="14" parent="7" name="seq">
       <Position>2</Position>
     </column>
   </database-model>

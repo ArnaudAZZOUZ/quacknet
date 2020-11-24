@@ -3,15 +3,18 @@
 namespace App\Entity;
 
 use App\Repository\DucksRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=DucksRepository::class)
+ * @ORM\Table(name="ducks")
  * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
-class Ducks implements UserInterface
+class Duck implements UserInterface
 {
     /**
      * @ORM\Id
@@ -50,6 +53,16 @@ class Ducks implements UserInterface
      * @ORM\Column(type="string", length=50, unique=true)
      */
     private $duckname;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Quack::class, mappedBy="author", orphanRemoval=true)
+     */
+    private $quacks;
+
+    public function __construct()
+    {
+        $this->quacks = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -161,6 +174,36 @@ class Ducks implements UserInterface
     public function setDuckname(string $duckname): self
     {
         $this->duckname = $duckname;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Quack[]
+     */
+    public function getQuacks(): Collection
+    {
+        return $this->quacks;
+    }
+
+    public function addQuack(Quack $quack): self
+    {
+        if (!$this->quacks->contains($quack)) {
+            $this->quacks[] = $quack;
+            $quack->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeQuack(Quack $quack): self
+    {
+        if ($this->quacks->removeElement($quack)) {
+            // set the owning side to null (unless already changed)
+            if ($quack->getAuthor() === $this) {
+                $quack->setAuthor(null);
+            }
+        }
 
         return $this;
     }

@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\Ducks;
+use App\Entity\Duck;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
@@ -10,16 +10,16 @@ use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @method Ducks|null find($id, $lockMode = null, $lockVersion = null)
- * @method Ducks|null findOneBy(array $criteria, array $orderBy = null)
- * @method Ducks[]    findAll()
- * @method Ducks[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Duck|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Duck|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Duck[]    findAll()
+ * @method Duck[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class DucksRepository extends ServiceEntityRepository implements PasswordUpgraderInterface
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Ducks::class);
+        parent::__construct($registry, Duck::class);
     }
 
     /**
@@ -27,7 +27,7 @@ class DucksRepository extends ServiceEntityRepository implements PasswordUpgrade
      */
     public function upgradePassword(UserInterface $user, string $newEncodedPassword): void
     {
-        if (!$user instanceof Ducks) {
+        if (!$user instanceof Duck) {
             throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', \get_class($user)));
         }
 

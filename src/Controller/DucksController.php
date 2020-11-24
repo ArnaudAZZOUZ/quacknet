@@ -2,15 +2,16 @@
 
 namespace App\Controller;
 
-use App\Entity\Ducks;
+use App\Entity\Duck;
 use App\Entity\Quack;
-use App\Form\DucksType;
+use App\Form\DuckType;
 use App\Form\Quack1Type;
 use App\Repository\DucksRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 
 /**
@@ -31,7 +32,7 @@ class DucksController extends AbstractController
     /**
      * @Route("/{id}", name="duck_show", methods={"GET"})
      */
-    public function show(Ducks $duck): Response
+    public function show(Duck $duck): Response
     {
         return $this->render('ducks/show.html.twig', [
             'duck' => $duck,
@@ -41,12 +42,14 @@ class DucksController extends AbstractController
     /**
      * @Route("/{id}/edit", name="duck_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Ducks $duck): Response
+    public function edit(Request $request, Duck $duck, UserPasswordEncoderInterface $passwordEncoder): Response
     {
-        $form = $this->createForm(DucksType::class, $duck);
+        $form = $this->createForm(DuckType::class, $duck);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $duck->setPassword($passwordEncoder->encodePassword($duck, $duck->getPassword()
+                        ));
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('ducks_index');
@@ -61,7 +64,7 @@ class DucksController extends AbstractController
     /**
      * @Route("/{id}", name="duck_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, Ducks $duck): Response
+    public function delete(Request $request, Duck $duck): Response
     {
         if ($this->isCsrfTokenValid('delete'.$duck->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();

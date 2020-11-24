@@ -2,7 +2,7 @@
 
 namespace App\Security;
 
-use App\Entity\Ducks;
+use App\Entity\Duck;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -67,7 +67,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
             throw new InvalidCsrfTokenException();
         }
 
-        $user = $this->entityManager->getRepository(Ducks::class)->findOneBy(['email' => $credentials['email']]);
+        $user = $this->entityManager->getRepository(Duck::class)->findOneBy(['email' => $credentials['email']]);
 
         if (!$user) {
             // fail authentication with a custom error

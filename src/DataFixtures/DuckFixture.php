@@ -2,7 +2,7 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Ducks;
+use App\Entity\Duck;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -15,7 +15,7 @@ class DuckFixture extends Fixture
      }
     public function load(ObjectManager $manager)
     {
-        $duck = new Ducks();
+        $duck = new Duck();
         $duck->setFirstname('Howard');
         $duck->setLastname('Duke');
         $duck->setDuckname('confit');

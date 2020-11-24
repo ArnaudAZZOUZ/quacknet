@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Ducks;
+use App\Entity\Duck;
 use App\Form\RegistrationFormType;
 use App\Security\LoginFormAuthenticator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,7 +19,7 @@ class RegistrationController extends AbstractController
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginFormAuthenticator $authenticator): Response
     {
-        $user = new Ducks();
+        $user = new Duck();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 

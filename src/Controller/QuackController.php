@@ -2,13 +2,16 @@
 
 namespace App\Controller;
 
+use App\Entity\Duck;
 use App\Entity\Quack;
 use App\Form\Quack1Type;
 use App\Repository\QuackRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
  * @Route("/quack")
@@ -28,13 +31,32 @@ class QuackController extends AbstractController
     /**
      * @Route("/new", name="quack_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, SluggerInterface $slugger): Response
     {
+//dd($this->getUser() instanceof Duck);
         $quack = new Quack();
+        $quack->setCreatedAt(new \DateTime("now"));
+        $quack->setAuthor($this->getUser());
+//        $quack->setAuthor($duck->getDuckname());
+//        $quack->setAuthor($this->getUser()->getDuckname());
         $form = $this->createForm(Quack1Type::class, $quack);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $uploaded_data=$form->all()['uploaded']->getData();
+            $originalFilename = pathinfo($uploaded_data->getClientOriginalName(), PATHINFO_FILENAME); //activate extension=fileinfo in php.ini
+            $safeFilename = $slugger->slug($originalFilename);
+            $newFilename = $safeFilename.'-'.uniqid().'.'.$uploaded_data->guessExtension();
+            try {
+                $uploaded_data->move(
+                    $this->getParameter('upload_dir'),
+                    $newFilename
+                );
+            } catch (FileException $e) {
+                dd("DONT MOVE !");
+            }
+            dd("ended");
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($quack);
             $entityManager->flush();

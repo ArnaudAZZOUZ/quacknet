@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Ducks;
+use App\Entity\Duck;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -51,7 +51,7 @@ class RegistrationFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Ducks::class,
+            'data_class' => Duck::class,
         ]);
     }
 }
