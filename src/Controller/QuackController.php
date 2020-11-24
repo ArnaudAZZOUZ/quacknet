@@ -6,6 +6,7 @@ use App\Entity\Duck;
 use App\Entity\Quack;
 use App\Form\Quack1Type;
 use App\Repository\QuackRepository;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
@@ -35,7 +36,9 @@ class QuackController extends AbstractController
     {
 //dd($this->getUser() instanceof Duck);
         $quack = new Quack();
-        $quack->setCreatedAt(new \DateTime("now"));
+        $date =new DateTime("now", new \DateTimeZone('Europe/Paris'));
+
+        $quack->setCreatedAt($date);
         $quack->setAuthor($this->getUser());
 //        $quack->setAuthor($duck->getDuckname());
 //        $quack->setAuthor($this->getUser()->getDuckname());
@@ -56,7 +59,12 @@ class QuackController extends AbstractController
             } catch (FileException $e) {
                 dd("DONT MOVE !");
             }
-            dd("ended");
+
+            $path_upload_dir = $this->getParameter('upload_dir');
+            $path_upload_dir = substr($path_upload_dir, strpos($path_upload_dir, "QuackNet"));
+            $quack->setPicture($path_upload_dir . "/" . $newFilename);
+
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($quack);
             $entityManager->flush();

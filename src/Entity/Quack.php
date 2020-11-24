@@ -37,6 +37,7 @@ class Quack
      * @ORM\JoinColumn(nullable=false)
      */
     private $author;
+
     public $uploaded;
 
 
