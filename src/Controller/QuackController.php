@@ -13,6 +13,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\Asset\Package;
+use Symfony\Component\Asset\VersionStrategy\EmptyVersionStrategy;
 
 /**
  * @Route("/quack")
@@ -36,12 +38,6 @@ class QuackController extends AbstractController
     {
 //dd($this->getUser() instanceof Duck);
         $quack = new Quack();
-        $date =new DateTime("now", new \DateTimeZone('Europe/Paris'));
-
-        $quack->setCreatedAt($date);
-        $quack->setAuthor($this->getUser());
-//        $quack->setAuthor($duck->getDuckname());
-//        $quack->setAuthor($this->getUser()->getDuckname());
         $form = $this->createForm(Quack1Type::class, $quack);
         $form->handleRequest($request);
 
@@ -60,9 +56,14 @@ class QuackController extends AbstractController
                 dd("DONT MOVE !");
             }
 
-            $path_upload_dir = $this->getParameter('upload_dir');
-            $path_upload_dir = substr($path_upload_dir, strpos($path_upload_dir, "QuackNet"));
-            $quack->setPicture($path_upload_dir . "/" . $newFilename);
+            $date =new DateTime("now", new \DateTimeZone('Europe/Paris'));
+
+            $quack->setCreatedAt($date);
+            $quack->setAuthor($this->getUser());
+
+//            $path_upload_dir = $this->getParameter('upload_dir');
+//            $path_upload_dir = substr($path_upload_dir, strpos($path_upload_dir, "quacknet"));
+            $quack->setPicture($newFilename);
 
 
             $entityManager = $this->getDoctrine()->getManager();
@@ -83,8 +84,11 @@ class QuackController extends AbstractController
      */
     public function show(Quack $quack): Response
     {
+        $ducky= $quack->getAuthor()->getDuckname();
+
         return $this->render('quack/show.html.twig', [
             'quack' => $quack,
+            'duck' =>$ducky,
         ]);
     }
 

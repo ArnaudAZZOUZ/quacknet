@@ -7,9 +7,14 @@
 
     <table class="table">
         <tbody>
+
             <tr>
-                <th>Id</th>
-                <td>{{ quack.id }}</td>
+                <th>Picture</th>
+                <td><img src="{{asset('upload/'~quack.picture)}}">       </td>
+            </tr>
+            <tr>
+                <th>Author</th>
+                <td>{{ duck }}</td>
             </tr>
             <tr>
                 <th>Content</th>
@@ -17,7 +22,7 @@
             </tr>
             <tr>
                 <th>Created_at</th>
-                <td>{{ quack.createdAt ? quack.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ quack.createdAt ? quack.createdAt|date('d-m-Y H:i:s') : '' }}</td>
             </tr>
         </tbody>
     </table>
