@@ -9,15 +9,13 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class Quack1Type extends AbstractType
+class Quack2Type extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('content')
-            ->add('uploaded', FileType::class)
-            ->add('tags')
 
+            ->add('critik')
 
 
         ;

@@ -20,15 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="00a4f40b-d0ac-409e-8dc9-cce19e24def7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/templates/quack/_form_comment.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/c6ca70e1-7090-4e37-bc4c-fe8cdaed8086.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c6ca70e1-7090-4e37-bc4c-fe8cdaed8086.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/QuackController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/QuackController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Quack.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Quack.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/Quack1Type.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/Quack1Type.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/quack/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/quack/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/quack/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/quack/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/quack/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/quack/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -165,12 +162,14 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/ducks" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Form" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\campus\quacknet\src\Form" />
+      <recent name="C:\Users\campus\quacknet\templates\quack" />
       <recent name="C:\Users\campus\quacknet\templates\ducks" />
     </key>
   </component>
@@ -185,7 +184,7 @@
       <workItem from="1605523126137" duration="13767000" />
       <workItem from="1605692949240" duration="54417000" />
       <workItem from="1606118649753" duration="37677000" />
-      <workItem from="1606291673600" duration="9151000" />
+      <workItem from="1606291673600" duration="14794000" />
     </task>
     <servers />
   </component>

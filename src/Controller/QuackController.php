@@ -6,6 +6,7 @@ use App\Entity\Duck;
 use App\Entity\Quack;
 use App\Entity\Tag;
 use App\Form\Quack1Type;
+use App\Form\Quack2Type;
 use App\Repository\QuackRepository;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -85,16 +86,31 @@ class QuackController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="quack_show", methods={"GET"})
+     * @Route("/{id}", name="quack_show", methods={"GET","POST"})
      */
-    public function show(Quack $quack): Response
+    public function show(Request $request, Quack $quack): Response
     {
+
+        $formcritik = $this->createForm(Quack2Type::class, $quack);
+        $formcritik->handleRequest($request);
+
         $ducky= $quack->getAuthor()->getDuckname();
 
+        if ($formcritik->isSubmitted() && $formcritik->isValid()) {
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($quack);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('quack_index');
+        }
+
         return $this->render('quack/show.html.twig', [
+            'formcritik' => $formcritik->createView(),
             'quack' => $quack,
             'duck' =>$ducky,
         ]);
+
     }
 
     /**

@@ -47,9 +47,25 @@ class Quack
      */
     private $tags;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Quack::class, inversedBy="parent")
+     */
+    private $comment;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Quack::class, mappedBy="comment")
+     */
+    private $parent;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $critik;
+
     public function __construct()
     {
         $this->tags = new ArrayCollection();
+        $this->parent = new ArrayCollection();
     }
 
 
@@ -131,6 +147,60 @@ class Quack
         if ($this->tags->removeElement($tag)) {
             $tag->removeTagname($this);
         }
+
+        return $this;
+    }
+
+    public function getComment(): ?self
+    {
+        return $this->comment;
+    }
+
+    public function setComment(?self $comment): self
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|self[]
+     */
+    public function getParent(): Collection
+    {
+        return $this->parent;
+    }
+
+    public function addParent(self $parent): self
+    {
+        if (!$this->parent->contains($parent)) {
+            $this->parent[] = $parent;
+            $parent->setComment($this);
+        }
+
+        return $this;
+    }
+
+    public function removeParent(self $parent): self
+    {
+        if ($this->parent->removeElement($parent)) {
+            // set the owning side to null (unless already changed)
+            if ($parent->getComment() === $this) {
+                $parent->setComment(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getCritik(): ?string
+    {
+        return $this->critik;
+    }
+
+    public function setCritik(?string $critik): self
+    {
+        $this->critik = $critik;
 
         return $this;
     }
