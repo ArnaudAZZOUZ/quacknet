@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Duck;
 use App\Entity\Quack;
+use App\Entity\Tag;
 use App\Form\Quack1Type;
 use App\Repository\QuackRepository;
 use DateTime;
@@ -15,7 +16,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\Asset\Package;
 use Symfony\Component\Asset\VersionStrategy\EmptyVersionStrategy;
-
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
+use Symfony\Component\Filesystem\Filesystem;
 /**
  * @Route("/quack")
  */
@@ -26,8 +28,10 @@ class QuackController extends AbstractController
      */
     public function index(QuackRepository $quackRepository): Response
     {
+
         return $this->render('quack/index.html.twig', [
             'quacks' => $quackRepository->findAll(),
+
         ]);
     }
 
@@ -36,8 +40,9 @@ class QuackController extends AbstractController
      */
     public function new(Request $request, SluggerInterface $slugger): Response
     {
-//dd($this->getUser() instanceof Duck);
+
         $quack = new Quack();
+
         $form = $this->createForm(Quack1Type::class, $quack);
         $form->handleRequest($request);
 
@@ -57,14 +62,14 @@ class QuackController extends AbstractController
             }
 
             $date =new DateTime("now", new \DateTimeZone('Europe/Paris'));
-
             $quack->setCreatedAt($date);
+
             $quack->setAuthor($this->getUser());
 
 //            $path_upload_dir = $this->getParameter('upload_dir');
 //            $path_upload_dir = substr($path_upload_dir, strpos($path_upload_dir, "quacknet"));
             $quack->setPicture($newFilename);
-
+//            $dataTag = $form->all()['tags']->getData()[0];
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($quack);
@@ -117,8 +122,10 @@ class QuackController extends AbstractController
      */
     public function delete(Request $request, Quack $quack): Response
     {
+        $filesystem = new Filesystem();
         if ($this->isCsrfTokenValid('delete'.$quack->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
+            $filesystem->remove($quack->getPicture());
             $entityManager->remove($quack);
             $entityManager->flush();
         }

@@ -20,6 +20,13 @@
                 <th>Content</th>
                 <td>{{ quack.content }}</td>
             </tr>
+            {% for tag in quack.tags%}
+            <tr>
+                <th>Tags</th>
+                <td>{{ tag }}</td>
+            </tr>
+            {% endfor%}
+
             <tr>
                 <th>Created_at</th>
                 <td>{{ quack.createdAt ? quack.createdAt|date('d-m-Y H:i:s') : '' }}</td>
