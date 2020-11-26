@@ -20,12 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="00a4f40b-d0ac-409e-8dc9-cce19e24def7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/quack/_form_comment.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/c6ca70e1-7090-4e37-bc4c-fe8cdaed8086.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c6ca70e1-7090-4e37-bc4c-fe8cdaed8086.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/QuackController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/QuackController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Quack.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Quack.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/Quack1Type.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/Quack1Type.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/Quack2Type.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/Quack2Type.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/quack/_form_comment.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/quack/_form_comment.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/quack/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/quack/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -184,7 +184,7 @@
       <workItem from="1605523126137" duration="13767000" />
       <workItem from="1605692949240" duration="54417000" />
       <workItem from="1606118649753" duration="37677000" />
-      <workItem from="1606291673600" duration="14794000" />
+      <workItem from="1606291673600" duration="17559000" />
     </task>
     <servers />
   </component>

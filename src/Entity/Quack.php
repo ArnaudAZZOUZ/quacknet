@@ -48,24 +48,19 @@ class Quack
     private $tags;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Quack::class, inversedBy="parent")
-     */
-    private $comment;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Quack::class, mappedBy="comment")
+     * @ORM\ManyToOne(targetEntity=Quack::class)
      */
     private $parent;
-
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\OneToMany(targetEntity=Quack::class, mappedBy="parent", cascade={"persist", "remove"})
      */
-    private $critik;
+    private $comments;
+
 
     public function __construct()
     {
         $this->tags = new ArrayCollection();
-        $this->parent = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
 
@@ -151,58 +146,49 @@ class Quack
         return $this;
     }
 
-    public function getComment(): ?self
-    {
-        return $this->comment;
-    }
-
-    public function setComment(?self $comment): self
-    {
-        $this->comment = $comment;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|self[]
-     */
-    public function getParent(): Collection
+    public function getParent(): ?self
     {
         return $this->parent;
     }
 
-    public function addParent(self $parent): self
+    public function setParent(?self $parent): self
     {
-        if (!$this->parent->contains($parent)) {
-            $this->parent[] = $parent;
-            $parent->setComment($this);
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+
+    /**
+     * @return Collection|self[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(self $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setParent($this);
         }
 
         return $this;
     }
 
-    public function removeParent(self $parent): self
+    public function removeComment(self $comment): self
     {
-        if ($this->parent->removeElement($parent)) {
+        if ($this->comments->removeElement($comment)) {
             // set the owning side to null (unless already changed)
-            if ($parent->getComment() === $this) {
-                $parent->setComment(null);
+            if ($comment->getParent() === $this) {
+                $comment->setParent(null);
             }
         }
 
         return $this;
     }
 
-    public function getCritik(): ?string
-    {
-        return $this->critik;
-    }
 
-    public function setCritik(?string $critik): self
-    {
-        $this->critik = $critik;
-
-        return $this;
-    }
 
 }

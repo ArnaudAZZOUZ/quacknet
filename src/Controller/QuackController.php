@@ -90,16 +90,19 @@ class QuackController extends AbstractController
      */
     public function show(Request $request, Quack $quack): Response
     {
-
-        $formcritik = $this->createForm(Quack2Type::class, $quack);
+        $comment= new Quack();
+        $formcritik = $this->createForm(Quack2Type::class, $comment);
         $formcritik->handleRequest($request);
-
+        $comment->setParent($quack);
+        $date =new DateTime("now", new \DateTimeZone('Europe/Paris'));
+        $comment->setCreatedAt($date);
+        $comment->setAuthor($this->getUser());
         $ducky= $quack->getAuthor()->getDuckname();
 
         if ($formcritik->isSubmitted() && $formcritik->isValid()) {
 
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($quack);
+            $entityManager->persist($comment);
             $entityManager->flush();
 
             return $this->redirectToRoute('quack_index');

@@ -21,6 +21,12 @@
                 <th>Content</th>
                 <td>{{ quack.content }}</td>
             </tr>
+            {% for comment in quack.comments%}
+            <tr>
+                <th>commentaires</th>
+                <td>{{ comment}}</td>
+            </tr>
+            {% endfor%}
             {% for tag in quack.tags%}
             <tr>
                 <th>Tags</th>

@@ -15,7 +15,7 @@ class Quack2Type extends AbstractType
     {
         $builder
 
-            ->add('critik')
+            ->add('content')
 
 
         ;
