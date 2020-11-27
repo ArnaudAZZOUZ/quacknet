@@ -6,7 +6,7 @@ use App\Repository\QuackRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=QuackRepository::class)
  */
@@ -21,21 +21,25 @@ class Quack
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"getQuacks"})
      */
     private $content;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"getQuacks"})
      */
     private $created_at;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"getQuacks"})
      */
     private $picture;
 
     /**
      * @ORM\ManyToOne(targetEntity=Duck::class, inversedBy="quacks")
+     * @Groups({"getQuacks"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $author;

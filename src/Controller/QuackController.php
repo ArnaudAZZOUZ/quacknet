@@ -31,7 +31,7 @@ class QuackController extends AbstractController
     {
 
         return $this->render('quack/index.html.twig', [
-            'quacks' => $quackRepository->findAll(),
+            'quacks' => $quackRepository->findBy(['parent'=>null]),
 
         ]);
     }

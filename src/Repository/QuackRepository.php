@@ -19,7 +19,15 @@ class QuackRepository extends ServiceEntityRepository
         parent::__construct($registry, Quack::class);
     }
 
-    // /**
+//    public function findQuackParent(){
+//        $entityManager = $this->getEntityManager();
+//        $query = $entityManager->createQuery(
+//            'SELECT * FROM quack WHERE parent=null '
+//        );
+//        return $query->getArrayResult();
+//        ;
+//    }
+     /**
     //  * @return Quack[] Returns an array of Quack objects
     //  */
     /*

@@ -24,7 +24,7 @@
             {% for comment in quack.comments%}
             <tr>
                 <th>commentaires</th>
-                <td>{{ comment}}</td>
+                <td>{{ comment.content}}</td>
             </tr>
             {% endfor%}
             {% for tag in quack.tags%}
